@@ -1,5 +1,10 @@
 pipeline {
-  agent { docker { image 'ruby:2.4' } }
+  agent {
+    docker {
+      image 'ruby:2.4'
+    }
+    
+  }
   stages {
     stage('build') {
       steps {
@@ -13,9 +18,7 @@ pipeline {
     }
     stage('run') {
       steps {
-        sh '''
-          sleep 10
-        '''
+        sh 'exit 0'
       }
     }
   }
