@@ -3,9 +3,18 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh './bin/bundle install'
-        sh './bin/rails db:migrate'
-        sh './bin/rails test'
+        sh '''
+          bundle install
+          ./bin/rails db:migrate
+          ./bin/rails test
+        '''
+      }
+    }
+    stage('run') {
+      steps {
+        sh '''
+          sleep 10
+        '''
       }
     }
   }
