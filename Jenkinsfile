@@ -4,6 +4,7 @@ pipeline {
     stage('build') {
       steps {
         sh '''
+          apt-get update && apt-get install -y nodejs
           bundle install
           ./bin/rails db:migrate
           ./bin/rails test
