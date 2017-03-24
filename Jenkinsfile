@@ -1,15 +1,9 @@
 pipeline {
-  agent {
-    docker {
-      image 'ruby:2.4'
-    }
-    
-  }
+  agent { docker { image 'nextrevision/ruby24-nodejs' } }
   stages {
     stage('build') {
       steps {
         sh '''
-          apt-get update && apt-get install -y nodejs
           bundle install
           ./bin/rails db:migrate
           ./bin/rails test
